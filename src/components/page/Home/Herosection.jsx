@@ -168,7 +168,7 @@ export default function Herosection() {
             >
               {fashion.map((items, index) => (
                 <SwiperSlide key={index}>
-                  <div className="flex flex-col items-center p-2 border rounded-lg shadow-md cursor-pointer w-[100px] sm:w-[120px] md:w-[150px]">
+                  <div className="flex flex-col items-center p-2 border rounded-lg shadow-md cursor-pointer w-fit">
                     <img
                       src={items.image}
                       alt={items.name}
