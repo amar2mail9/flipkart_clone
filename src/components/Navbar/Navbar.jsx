@@ -6,9 +6,7 @@ import {
   BsFillBellFill,
   BsFillLightningChargeFill,
   BsGraphUpArrow,
-  BsGrid3X3Gap,
   BsGrid3X3GapFill,
-  BsLightningCharge,
 } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 
@@ -18,7 +16,6 @@ import {
   FaRegCircleUser,
   FaRegHeart,
   FaRegUser,
-  FaS,
   FaUser,
 } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
@@ -32,7 +29,6 @@ import {
   IoBagSharp,
   IoGridSharp,
   IoLanguageOutline,
-  IoMenu,
   IoSearchOutline,
 } from "react-icons/io5";
 import { LuShoppingCart } from "react-icons/lu";
@@ -40,7 +36,6 @@ import { MdOutlineCardGiftcard, MdOutlineHelp } from "react-icons/md";
 import { PiBoxArrowUpFill } from "react-icons/pi";
 import {
   RiCustomerService2Fill,
-  RiGalleryView2,
   RiMenu4Fill,
   RiMenu5Fill,
   RiMobileDownloadLine,
@@ -103,62 +98,62 @@ export default function Navbar() {
     {
       name: "SuperCoin Zone",
       icons: (
-        <BsFillLightningChargeFill className="bg-gray-700 p-1 w-6 h-6 rounded-full text-white" />
+        <BsFillLightningChargeFill className="bg-gray-700 p-1 w-5 h-5 rounded-full text-white" />
       ),
     },
     {
       name: "Flipkart Plus Zone",
-      icons: <TiPlusOutline className="text-3xl  " />,
+      icons: <TiPlusOutline className="text-xl  " />,
     },
     {
       name: "All Categories",
-      icons: <IoGridSharp className="text-3xl text-gray-700 " />,
+      icons: <IoGridSharp className="text-xl text-gray-700 " />,
     },
     {
       name: "More on Flipkart",
       icons: (
-        <BsGrid3X3GapFill className="bg-gray-700 text-3xl p-[3px]  rounded-full text-white" />
+        <BsGrid3X3GapFill className="bg-gray-700 text-xl p-[3px]  rounded-full text-white" />
       ),
     },
     {
       name: "Choose Language",
-      icons: <IoLanguageOutline className="text-3xl text-gray-700 " />,
+      icons: <IoLanguageOutline className="text-xl text-gray-700 " />,
     },
     {
       name: "Offer Zone",
-      icons: <BiSolidOffer className="text-3xl" />,
+      icons: <BiSolidOffer className="text-xl" />,
     },
     {
       name: "Sell on Flipkart",
-      icons: <IoBagSharp className="text-3xl" />,
+      icons: <IoBagSharp className="text-xl" />,
     },
     {
       name: "My Orders",
-      icons: <PiBoxArrowUpFill className="text-3xl text-gray-700 " />,
+      icons: <PiBoxArrowUpFill className="text-xl text-gray-700 " />,
     },
     {
       name: "Coupons",
-      icons: <BiSolidCoupon className="text-3xl" />,
+      icons: <BiSolidCoupon className="text-xl" />,
     },
     {
       name: "My Cart",
-      icons: <LuShoppingCart className="text-3xl" />,
+      icons: <LuShoppingCart className="text-xl" />,
     },
     {
       name: "My Wishlist",
-      icons: <FaHeart className="text-3xl" />,
+      icons: <FaHeart className="text-xl" />,
     },
     {
       name: "My Account",
-      icons: <FaUser className="text-3xl" />,
+      icons: <FaUser className="text-xl" />,
     },
     {
       name: "My Notifications",
-      icons: <BsFillBellFill className="text-3xl" />,
+      icons: <BsFillBellFill className="text-xl" />,
     },
     {
       name: "Help Centre",
-      icons: <MdOutlineHelp className="text-3xl" />,
+      icons: <MdOutlineHelp className="text-xl" />,
     },
     {
       name: " Legal",
@@ -182,11 +177,12 @@ export default function Navbar() {
   const [showSearchBox, setShowSearchBox] = useState(false);
   const handleOnSearch = () => {
     setShowSearchBox(!showSearchBox);
-    setShowMenuSmallScreen(false)
+    setShowMenuSmallScreen(false);
   };
 
   // small menu icons
   const [showMenuSmallScreen, setShowMenuSmallScreen] = useState(false);
+
   const handleShowMenuSmallScreen = () => {
     setShowMenuSmallScreen(!showMenuSmallScreen);
     setShowSearchBox(false);
@@ -255,7 +251,7 @@ export default function Navbar() {
                       return (
                         <Link className="flex gap-2 items-center">
                           {items.icons}
-                          <span htmlFor="myProfile">{items.name}</span>
+                          <small htmlFor="myProfile">{items.name}</small>
                         </Link>
                       );
                     })}
@@ -342,12 +338,9 @@ export default function Navbar() {
           {/* small screen menu items */}
 
           {showMenuSmallScreen && (
-            <div
-              className="fixed top-0 left-0  w-full  h-screen lg:hidden block "
-              onClick={handleShowMenuSmallScreen}
-            >
-              <div className="w-[70%] h-[100%] bg-blue-50 z-50">
-                <div className="bg-blue-600 p-4  font-normal text-lg flex items-center justify-between text-white">
+            <div className="fixed top-0 left-0 flex w-full h-screen  lg:hidden items-center bg-[rgba(0,0,0,0.6)] z-50">
+              <div className={`w-[70%] h-full bg-blue-50`}>
+                <div className="bg-blue-600 p-4 font-normal text-lg flex items-center justify-between text-white">
                   <button className="flex gap-4 items-center">
                     <FaUser />
                     <span>Login & SignUp</span>
@@ -359,22 +352,26 @@ export default function Navbar() {
                     title="Flipkart_Clone"
                   />
                 </div>
-                <div className=" space-y-4 flex text-gray-700  items-start flex-col px-4 py-4">
-                  {smallScreenMenu.map((items, idex) => {
+
+                <div className="space-y-4 flex text-gray-700 items-start flex-col px-4 py-4">
+                  {smallScreenMenu.map((items, index) => {
                     return (
-                      <Link
-                        key={idex}
-                        className="flex text-xl gap-3  items-center"
-                      >
-                        <span> {items.icons}</span>
-                        <span className=" text-gray-700 font-semibold">
+                      <Link key={index} className="flex gap-3 items-center">
+                        <span>{items.icons}</span>
+                        <small className="text-gray-700 font-semibold">
                           {items.name}
-                        </span>
+                        </small>
                       </Link>
                     );
                   })}
                 </div>
               </div>
+
+              {/* Clickable area to close the menu */}
+              <div
+                className="w-[40%] h-full"
+                onClick={handleShowMenuSmallScreen}
+              ></div>
             </div>
           )}
 
