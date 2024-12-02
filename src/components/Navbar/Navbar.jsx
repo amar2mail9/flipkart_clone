@@ -190,7 +190,7 @@ export default function Navbar() {
   // Return
   return (
     <>
-      <header className="bg-white p-3 w-full sticky top-0 ">
+      <header className=" z-50 bg-white p-3 w-full sticky top-0 ">
         <nav className="flex gap-6 items-center justify-between lg:w-11/12 w-full px-6 mx-auto ">
           <div className="flex items-center ">
             {/* Small screen Menu icons */}
